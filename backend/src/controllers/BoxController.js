@@ -4,8 +4,15 @@ class BoxController {
 
     async store(req, res) {
         const box = await Box.create(req.body);
+        res.json(box);
+    };
 
-        return res.json(box);
+    async show(req, res) {
+        const box = await Box.findById(req.params.id).populate({
+            path: 'files',
+            options: { sort: { createdAt: -1 } }
+        });
+        res.json(box);
     };
 };
 
