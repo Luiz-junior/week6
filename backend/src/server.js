@@ -28,5 +28,5 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')));
 
 app.use(require('./routes'));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 server.listen(port, () => console.log(`server running on port ${port}`));
